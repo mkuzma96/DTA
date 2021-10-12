@@ -1,6 +1,6 @@
 # Deconfounding Temporal Autoencoder (DTA)
 
-This is an anonymous git repository for the paper "Deconfounding Temporal Autoencoder: Estimating Treatment Effects over Time Using Noisy Proxies". 
+This is a repository for the paper "Deconfounding Temporal Autoencoder: Estimating Treatment Effects over Time Using Noisy Proxies". 
 
 # Python scripts
 
