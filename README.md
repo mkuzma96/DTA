@@ -1,40 +1,6 @@
-# Deconfounding Temporal Autoencoder (DTA)
+# Deconfounding Temporal Autoencoder: Estimating Treatment Effects over Time Using Noisy Proxies
 
-This is a repository for the paper "Deconfounding Temporal Autoencoder: Estimating Treatment Effects over Time Using Noisy Proxies". 
+Abstract: Estimating individualized treatment effects (ITEs) from observational data is crucial for decision-making. In order to obtain unbiased ITE estimates, a common assumption is that all confounders are observed. However, in practice, it is unlikely that we observe these confounders directly. Instead, we often observe noisy measurements of true confounders, which can serve as valid proxies. In this paper, we address the problem of estimating ITE in the longitudinal setting where we observe noisy proxies instead of true confounders. To this end, we develop the Deconfounding Temporal Autoencoder (DTA), a novel method that leverages observed noisy proxies to learn a hidden embedding that reflects the true hidden confounders. In particular, the DTA combines a long short-term memory autoencoder with a causal regularization penalty that renders the potential outcomes and treatment assignment conditionally independent given the learned hidden embedding. Once the hidden embedding is learned
+via DTA, state-of-the-art outcome models can be used to control for it and obtain unbiased estimates of ITE. Using synthetic and real-world medical data, we demonstrate the effectiveness of our DTA by improving over state-of-the-art benchmarks by a substantial margin.
 
-# Python scripts
-
-The following scripts are used to reproduce the results:
-
-main.py      (main script containing the implementation code)
-
-sim_exp.py   (reproducing the simulation experiments)
-
-mimic_exp.py (reproducing the results with MIMIC-III)
-
-The first two scripts are self contained. The last one uses the pre-processed MIMIC-III data set. The pre-processing pipeline is adopted from Wang et. al. (2020). See the references below.
-
-# Requirements
-
-python 3.6
-pytorch 1.7
-
-# Reproducing simulation results
-
-Run the script sim_exp.py. The script contains synthetic data simulation and code that produces the results reported.
-
-# Reproducing MIMIC-III results
-
-Run the script mimic_exp.py. The script requires the pre-processed MIMIC-III data as input (see references below).
-
-MIMIC-III is a freely accessible database. However, access must be requested at https://physionet.org/content/mimiciii/1.4/. When MIMIC-III access is granted, the pre-processed data by Wang et. al. (2020) is accessible with instructions in the respective paper. We use this data set to study the effect of vasopressors and mechanical ventilation on two outcome variables: (diastolic) blood pressure and oxygen saturation. 
-
-We extract 2313 patients with 30 time steps each. We use the following covariates: heart rate, red blood cell count, sodium, mean blood pressure, systemic vascular resistence, glucose, chloride urine, glascow coma scale total, hematrocit, positive end-pressure set, respiratory rate, prothrombin time pt, cholesterol, hemoglobin, creatinine, blood urea nitrogen, bicarbonate, calcium ionized, partial pressure of carbon dioxide, magnesium, anion gap, phosphorous, venous pvo2, platelets, calcium urine.
-
-# References
-
-Johnson, A. E., Pollard, T. J., Shen, L., Li-Wei, H. L., Feng, M., Ghassemi, M., ... & Mark, R. G. (2016). MIMIC-III, a freely accessible critical care database. Scientific data, 3(1), 1-9.
-
-Wang, S., McDermott, M. B., Chauhan, G., Ghassemi, M., Hughes, M. C., & Naumann, T. (2020, April). MIMIC-extract: A data extraction, preprocessing, and representation pipeline for MIMIC-III. In Proceedings of the ACM Conference on Health, Inference, and Learning (pp. 222-235).
-
-
+Paper available: https://proceedings.mlr.press/v158/kuzmanovic21a/kuzmanovic21a.pdf
